@@ -25,9 +25,9 @@ TEMPLATE_DIRS = [
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.git("DEBIG" , "False") == "true"
+DEBUG = os.environ.get("DEBuG" , "False") == "true"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = [] #os.environ.get("ALLOWED_HOSTS").split(" ")
 
 # Application definition
 
