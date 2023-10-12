@@ -23,13 +23,11 @@ TEMPLATE_DIRS = [
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(2wml1uf2e0(8sh9tjr@w%(c6)#0wf^3yjqrw4)xedr@-vd!+3'
-
+SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.git("DEBIG" , "False") == "true"
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1' , 'localhost']
-
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 # Application definition
 
@@ -98,8 +96,8 @@ DATABASES = {
         'NAME' : BASE_DIR / 'db.sqlite3',
     }
 }
-
-DATABASES["default"] = dj_database_url.parse("postgres://preetyprinted_django_render_user:adzorXZ0WwKE5sYrBBva6PN6n38Y47M8@dpg-ckjqbv8lk5ic73fno3dg-a.oregon-postgres.render.com/preetyprinted_django_render")
+database_url = os.environ.get("DATABASE_URL")
+DATABASES["default"] = dj_database_url.parse(database_url)
 # postgres://preetyprinted_django_render_user:adzorXZ0WwKE5sYrBBva6PN6n38Y47M8@dpg-ckjqbv8lk5ic73fno3dg-a.oregon-postgres.render.com/preetyprinted_django_render
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
